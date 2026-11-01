@@ -82,6 +82,10 @@ h2 { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:cla
 .card p { font-size:15px; line-height:1.5; margin:0; }
 
 /* added */
+.next-mini { border:2px solid var(--gold); padding:14px 16px; margin:0 0 22px; max-width:62ch; display:flex; flex-direction:column; gap:8px; }
+.next-mini .px { font-size:9px; color:var(--gold); }
+.next-mini strong { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:24px; line-height:1.05; }
+
 .b-player { display:flex; gap:22px; align-items:flex-start; }
 .roster { flex:1 1 auto; display:grid; grid-template-columns:repeat(var(--cols,1), minmax(0,1fr)); gap:12px; max-width:320px; }
 .roster.solo { max-width:150px; }
@@ -227,7 +231,8 @@ footer { align-items:flex-end;  padding:56px 0 64px; font-size:10px; display:fle
       </ol>
     </div>
     <p class="promise">Astralab 1.0 closed its doors in the Granada Buildings with one final gathering: half our belongings in suitcases, gratitude overflowing, and a promise made that night for what would come next. A place for artists to be, away from the city, closer to the earth. This is that promise.</p>
-    <a class="btn" href="timeline.html">See the full timeline</a><a class="btn ghost" href="archive.html">Read the first vision</a>
+    <div class="next-mini" id="next-mini"></div>
+    <a class="btn" href="timeline.html#campaign">See the campaign</a><a class="btn ghost" href="archive.html">Read the first vision</a>
   </div>
 </section>
 
@@ -331,6 +336,13 @@ var PLAYERS = [
   d.addEventListener('click',function(e){ if(e.target===d) close(); });
   d.querySelector('.qm-x').addEventListener('click',close);
 })();
+</script>
+<script src="campaign.js"></script>
+<script>
+(function(){ var ng=window.hiraNextGoal&&hiraNextGoal(), b=document.getElementById('next-mini'); if(!b) return;
+  if(!ng){ b.innerHTML='<span class="px">ALL LEVELS CLEARED</span>'; return; }
+  b.innerHTML='<span class="px">NEXT GOAL</span><strong></strong><span class="px lv"></span>';
+  b.querySelector('strong').textContent=ng.cp.t; b.querySelector('.lv').textContent='LEVEL '+String(ng.index+1).padStart(2,'0')+' · '+ng.level.name.toUpperCase(); })();
 </script>
 </body>
 </html>

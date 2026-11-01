@@ -30,6 +30,31 @@ li.future::before { background:var(--bg); outline:5px solid var(--gold); outline
 li.future .what { color:transparent; -webkit-text-stroke:2px var(--cream); }
 li p { max-width:56ch; margin:0; opacity:.9; }
 .note { font-size:10px; opacity:.7; margin:-40px 0 70px; }
+.campaign { border-top:2px solid var(--gold); padding-top:50px; margin-bottom:90px; }
+.campaign .kicker { margin-top:0; }
+.ch { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:clamp(48px,9vw,100px); line-height:.95; margin:12px 0 30px; }
+.next { background:var(--gold); color:var(--lapis); padding:22px 24px; margin-bottom:34px; }
+.next .nl { font-size:11px; }
+.next .ng { font-family:Anton; text-transform:uppercase; font-size:clamp(28px,4.5vw,46px); line-height:1.02; margin:10px 0 12px; }
+.next .nlv { font-size:9px; opacity:.8; }
+.levels { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.level { background:#162F70; padding:18px 18px 14px; outline:2px solid rgba(245,239,227,.18); outline-offset:-2px; }
+.level.current { outline:4px solid var(--gold); outline-offset:-4px; }
+.level.cleared { opacity:.7; }
+.lh { display:flex; justify-content:space-between; font-size:9px; color:var(--gold); }
+.level h3 { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:30px; line-height:1; margin:10px 0 4px; }
+.level .tag { font-style:italic; font-size:15px; opacity:.8; margin-bottom:12px; }
+.bar { display:flex; gap:4px; margin-bottom:12px; }
+.bar i { flex:1; height:12px; background:rgba(245,239,227,.15); }
+.bar i.on { background:var(--gold); }
+.level ul { list-style:none; margin:0; padding:0; font-size:15px; line-height:1.45; }
+.level li { position:relative; padding-left:22px; margin-bottom:6px; }
+.level li::before { content:""; position:absolute; left:0; top:5px; width:10px; height:10px; outline:2px solid var(--cream); outline-offset:-2px; }
+.level li.done { opacity:.6; text-decoration:line-through; text-decoration-color:var(--gold); }
+.level li.done::before { background:var(--gold); outline-color:var(--gold); }
+.level li.now { color:var(--gold); }
+.level li.now::before { outline-color:var(--gold); }
+@media (max-width:760px) { .levels { grid-template-columns:1fr; } }
 @media (max-width:760px) { .wrap { padding:0 16px; } nav .mark svg { height:72px; } ol { padding-left:38px; } li::before { left:-38px; width:22px; height:22px; } ol::before { left:7px; } }
 </style></head>
 <body><div class="wrap">
@@ -38,4 +63,31 @@ li p { max-width:56ch; margin:0; opacity:.9; }
 <h1>Timeline</h1>
 <ol><li class=""><div class="date px">APR 2026</div><div class="what">Astralab closes</div><p>One final gathering in the Granada Buildings, and a promise made that night: a place for artists to be, away from the city, closer to the earth.</p></li><li class=""><div class="date px">JUL 2026</div><div class="what">The land</div><p>A quarter-acre in a canyon above the foothills, beside the Angeles National Forest. The promise finds its ground.</p></li><li class=""><div class="date px">AUTUMN 2026</div><div class="what">Solar on</div><p>Panels on the kitchen shed. The land runs on the sun.</p></li><li class="future"><div class="date px">DEC 2026</div><div class="what">Nur Dome</div><p>The 29-foot earth dome rises: the prayer and meeting space, the heart of the land.</p></li><li class="future"><div class="date px">2027</div><div class="what">Hisham & Nazim</div><p>The bedroom dome and the meditation dome, joined to the Nur Dome by corridors.</p></li><li class="future"><div class="date px">2027</div><div class="what">The Garden Table</div><p>A lounge under rippling linen, around a still, dark pool.</p></li></ol>
 <p class="note px">Solid: done. Outline: still to come.</p>
+<section class="campaign" id="campaign">
+  <div class="kicker px">The Campaign</div>
+  <h2 class="ch">Level by level</h2>
+  <div class="next" id="next-goal"></div>
+  <div class="levels" id="levels"></div>
+</section>
+<script src="campaign.js"></script>
+<script>
+(function(){
+  var ng=hiraNextGoal(), box=document.getElementById('next-goal');
+  if(ng){ box.innerHTML='<div class="px nl">NEXT GOAL</div><div class="ng"></div><div class="px nlv"></div>';
+    box.querySelector('.ng').textContent=ng.cp.t; box.querySelector('.nlv').textContent='LEVEL '+String(ng.index+1).padStart(2,'0')+' · '+ng.level.name.toUpperCase(); }
+  else { box.innerHTML='<div class="px nl">ALL LEVELS CLEARED</div>'; }
+  var wrap=document.getElementById('levels');
+  CAMPAIGN.forEach(function(L,i){
+    var done=L.checkpoints.filter(function(c){return c.done;}).length, n=L.checkpoints.length;
+    var el=document.createElement('article'); el.className='level'+(ng&&ng.index===i?' current':'')+(done===n?' cleared':'');
+    var bar=L.checkpoints.map(function(c){return '<i class="'+(c.done?'on':'')+'"></i>';}).join('');
+    el.innerHTML='<div class="lh"><span class="px ln">LEVEL '+String(i+1).padStart(2,'0')+'</span><span class="px lc">'+done+'/'+n+'</span></div>'+
+      '<h3></h3><div class="tag"></div><div class="bar" aria-hidden="true">'+bar+'</div><ul></ul>';
+    el.querySelector('h3').textContent=L.name; el.querySelector('.tag').textContent=L.tag;
+    var ul=el.querySelector('ul');
+    L.checkpoints.forEach(function(c){ var li=document.createElement('li'); li.className=c.done?'done':(ng&&ng.cp===c?'now':''); li.textContent=c.t; ul.appendChild(li); });
+    wrap.appendChild(el);
+  });
+})();
+</script>
 </div></body></html>
