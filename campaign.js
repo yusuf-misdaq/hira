@@ -5,7 +5,6 @@ var CAMPAIGN = [
   { id: "clear", name: "Clear the Land", tag: "Clean-up", checkpoints: [
     { t: "Walk the land and mark every pile: keep, give away, sell, dump", done: false },
     { t: "Give away and sell what still has life in it", done: false },
-    { t: "Scrap metal to the recycler", done: false },
     { t: "Haul the rest to the dump or transfer station", done: false },
     { t: "Clear the old burned foundation of ash and debris", done: false }
   ]},
