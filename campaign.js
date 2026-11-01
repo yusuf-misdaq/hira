@@ -3,7 +3,7 @@
    Levels are listed in the order they're being tackled. The first unticked checkpoint becomes NEXT GOAL. */
 var CAMPAIGN = [
   { id: "clear", name: "Clear the Land", tag: "Clean-up", checkpoints: [
-    { t: "Walk the land and mark every pile: keep, give away, sell, scrap, dump", done: false },
+    { t: "Walk the land and mark every pile: keep, give away, sell, dump", done: false },
     { t: "Give away and sell what still has life in it", done: false },
     { t: "Scrap metal to the recycler", done: false },
     { t: "Haul the rest to the dump or transfer station", done: false },
@@ -26,23 +26,26 @@ var CAMPAIGN = [
     { t: "Buy the hens", done: false }
   ]},
   { id: "trellis", name: "The Arched Trellis", tag: "Garden tunnel", checkpoints: [
-    { t: "Set the final stake on the first arch", done: false },
+    { t: "Set the final stake on the first arch", done: true },
     { t: "Walk and string the rest of the route", done: false },
     { t: "Buy the panels and posts", done: false },
     { t: "Raise the arches", done: false },
     { t: "Plant the climbers", done: false }
   ]},
   { id: "container", name: "The Container", tag: "With a bathroom with a view", checkpoints: [
-    { t: "Choose the spot and check the truck can get up the road", done: false },
+    { t: "Choose the spot and check the truck can get up the road", done: true },
     { t: "Dig and level six concrete piers", done: false },
     { t: "Pour the piers and let them cure a week", done: false },
+    { t: "Buy the container", done: false },
+    { t: "Arrange transport", done: false },
     { t: "Container delivered and set down", done: false },
+    { t: "Lay the cork floorboards", done: false },
     { t: "Bathroom with a view: bamboo walls", done: false },
     { t: "Composting toilet", done: false },
     { t: "Portable propane shower", done: false },
-    { t: "Source the cheapest lime that works for tadelakt", done: false },
-    { t: "Tadelakt lime shower", done: false },
-    { t: "Lime-and-sand splash areas, sealed with home-made olive-oil soap", done: false }
+    { t: "Source the cheapest lime that works for Moroccan tadelakt", done: false },
+    { t: "Moroccan tadelakt lime shower", done: false },
+    { t: "Lime-and-sand splash areas, sealed with olive oil soap", done: false }
   ]},
   { id: "wall", name: "The Front Wall", tag: "Rammed earth", checkpoints: [
     { t: "Confirm the wall line and height", done: false },
@@ -70,11 +73,11 @@ var CAMPAIGN = [
     { t: "Welcome the koi", done: false }
   ]},
   { id: "silk", name: "The Silk Sky", tag: "The Garden Table", checkpoints: [
-    { t: "Decide the layout, seating and pool style", done: false },
-    { t: "Posts and beams", done: false },
-    { t: "Earthen benches", done: false },
-    { t: "Reflecting-pool table", done: false },
-    { t: "Hang the linen", done: false }
+    { t: "Decide the layout, seating and pool style", done: true },
+    { t: "Posts and beams", done: true },
+    { t: "Earthen benches", done: true },
+    { t: "Reflecting-pool table", done: true },
+    { t: "Hang the linen", done: true }
   ]},
   { id: "lapis", name: "The Lapis Room", tag: "Podcast studio", checkpoints: [
     { t: "Call for hardback books", done: false },
@@ -85,6 +88,7 @@ var CAMPAIGN = [
   ]},
   { id: "power", name: "Power & Hot Water", tag: "Sun and propane", checkpoints: [
     { t: "Main solar system wired", done: true },
+    { t: "Wire the first electrical outlets to the kitchen", done: false },
     { t: "Propane tank installed", done: false },
     { t: "Propane water heater for the sinks", done: false },
     { t: "Outdoor outlets", done: false },
