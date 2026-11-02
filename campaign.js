@@ -9,11 +9,11 @@ var CAMPAIGN = [
     { t: "Clear the old burned foundation of ash and debris", done: false }
   ]},
   { id: "gardens", name: "The Gardens", tag: "Planting season", checkpoints: [
+    { t: "Plant: fig tree, passion fruit, onions, aubergine, jalapeño, carrots", done: true },
     { t: "Weed the beds, the boundary and the paths", done: false },
     { t: "Mark the best spots for every tree and plant: sun, water, privacy", done: false },
     { t: "Plant the cypress along the boundary and at the entry", done: false },
     { t: "Plant the roses", done: false },
-    { t: "Plant the rest of the fruit: fig, pomegranate, olive, passion fruit", done: false },
     { t: "Drip lines to the new plantings", done: false },
     { t: "Two solar-powered fountains", done: false }
   ]},
