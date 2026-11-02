@@ -14,6 +14,8 @@ var CAMPAIGN = [
     { t: "Mark the best spots for every tree and plant: sun, water, privacy", done: false },
     { t: "Plant the cypress along the boundary and at the entry", done: false },
     { t: "Plant the roses", done: false },
+    { t: "Arched trellis: first arch set", done: true },
+    { t: "Arched trellis: raise the rest of the arches & plant the climbers", done: false },
     { t: "Drip lines to the new plantings", done: false },
     { t: "Two solar-powered fountains", done: false }
   ]},
@@ -41,13 +43,6 @@ var CAMPAIGN = [
     { t: "Build the coop and the wire run", done: false },
     { t: "Make the water-nipple bucket", done: false },
     { t: "Buy the hens", done: false }
-  ]},
-  { id: "trellis", name: "The Arched Trellis", tag: "Garden tunnel", checkpoints: [
-    { t: "Set the final stake on the first arch", done: true },
-    { t: "Walk and string the rest of the route", done: false },
-    { t: "Buy the panels and posts", done: false },
-    { t: "Raise the arches", done: false },
-    { t: "Plant the climbers", done: false }
   ]},
   { id: "container", name: "The Container", tag: "With a bathroom with a view", checkpoints: [
     { t: "Choose the spot and check the truck can get up the road", done: true },
