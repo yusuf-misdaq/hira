@@ -96,6 +96,8 @@ footer .copy { font-size:9px; opacity:.75; align-self:flex-end; }
 @media (max-width:760px) { .compare { grid-template-columns:1fr; gap:34px; } .cframe { padding:14px; border-radius:16px; } }
 
 .next-mini { border:2px solid var(--gold); padding:14px 16px; margin:0 0 22px; max-width:62ch; display:flex; flex-direction:column; gap:8px; }
+a.next-mini { color:inherit; text-decoration:none; transition:background .15s; }
+a.next-mini:hover { background:rgba(233,196,106,.12); }
 .next-mini .px { font-size:9px; color:var(--gold); }
 .next-mini strong { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:24px; line-height:1.05; }
 
@@ -249,7 +251,7 @@ footer { align-items:flex-end;  padding:56px 0 64px; font-size:10px; display:fle
       </ol>
     </div>
     <p class="promise">Astralab 1.0 closed its doors in the Granada Buildings with one final gathering: half our belongings in suitcases, gratitude overflowing, and a promise made that night for what would come next. A place for artists to be, away from the city, closer to the earth. This is that promise.</p>
-    <div class="next-mini" id="next-mini"></div>
+    <a class="next-mini" id="next-mini" href="timeline.html#campaign" aria-label="Next goal: see the Levels"></a>
     <a class="btn" href="timeline.html#campaign">See the Levels</a><a class="btn ghost" href="archive.html">Read the first vision</a>
   </div>
 </section>
