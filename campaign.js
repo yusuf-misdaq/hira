@@ -47,10 +47,11 @@ var CAMPAIGN = [
   ]},
   { id: "bathhouse", name: "Tiled Bathhouse", tag: "The shed bathroom first, the container later", checkpoints: [
     { t: "Composting toilet", done: false },
-    { t: "Portable propane shower", done: false },
+    { t: "Propane Rain shower", done: false },
     { t: "Source the cheapest lime that works for Moroccan tadelakt", done: false },
     { t: "Moroccan tadelakt lime shower", done: false },
-    { t: "Lime-and-sand splash areas, sealed with Palestinian olive", done: false }
+    { t: "Lime-and-sand splash areas, sealed with Palestinian olive", done: false },
+    { t: "Tile floor with grey slate", done: false }
   ]},
   { id: "container", name: "The Container", tag: "20 ft shipping container", checkpoints: [
     { t: "Choose the spot and check the truck can get up the road", done: true },
