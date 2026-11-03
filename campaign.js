@@ -45,20 +45,20 @@ var CAMPAIGN = [
     { t: "Make the water-nipple bucket", done: false },
     { t: "Buy the hens", done: false }
   ]},
-  { id: "container", name: "The Container", tag: "With a bathroom with a view", checkpoints: [
-    { t: "Choose the spot and check the truck can get up the road", done: true },
-    { t: "Dig and level six concrete piers", done: false },
-    { t: "Pour the piers and let them cure a week", done: false },
-    { t: "Buy the container", done: false },
-    { t: "Arrange transport", done: false },
-    { t: "Container delivered and set down", done: false },
-    { t: "Lay the cork floorboards", done: false },
-    { t: "Bathroom with a view: bamboo walls", done: false },
+  { id: "bathhouse", name: "Tiled Bathhouse", tag: "The shed bathroom first, the container later", checkpoints: [
     { t: "Composting toilet", done: false },
     { t: "Portable propane shower", done: false },
     { t: "Source the cheapest lime that works for Moroccan tadelakt", done: false },
     { t: "Moroccan tadelakt lime shower", done: false },
     { t: "Lime-and-sand splash areas, sealed with olive oil soap", done: false }
+  ]},
+  { id: "container", name: "The Container", tag: "20 ft shipping container", checkpoints: [
+    { t: "Choose the spot and check the truck can get up the road", done: true },
+    { t: "Dig and level six concrete piers", done: false },
+    { t: "Pour the piers and let them cure a week", done: false },
+    { t: "Buy the container & arrange transport", done: true },
+    { t: "Container delivered and set down", done: false },
+    { t: "Lay the cork floorboards", done: false }
   ]},
   { id: "wall", name: "The Front Wall", tag: "Rammed earth", checkpoints: [
     { t: "Confirm the wall line and height", done: false },
