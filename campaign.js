@@ -9,6 +9,7 @@ var CAMPAIGN = [
     { t: "Clear the old burned foundation of ash and debris", done: false }
   ]},
   { id: "gardens", name: "The Gardens", tag: "Planting season", checkpoints: [
+    { t: "Remediate the dead soil & plant the grass seedlings", done: true },
     { t: "Plant: fig tree, passion fruit, onions, aubergine, jalapeño, carrots", done: true },
     { t: "Weed the beds, the boundary and the paths", done: false },
     { t: "Mark the best spots for every tree and plant: sun, water, privacy", done: false },
