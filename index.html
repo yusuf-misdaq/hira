@@ -89,15 +89,16 @@ h2 { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:cla
 .mb-pic span { position:absolute; left:10px; right:10px; bottom:8px; font-style:italic; font-size:14px; line-height:1.2; color:var(--terra); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .mb-pic:hover, .mb-pic:focus-visible { transform:rotate(0) scale(1.04); z-index:20; box-shadow:0 4px 6px rgba(42,37,33,.14), 0 18px 40px rgba(42,37,33,.26); }
 .mb-word { position:absolute; left:var(--l); top:var(--t); z-index:8; transform:rotate(var(--r)); font-family:Anton; text-transform:uppercase; font-size:clamp(16px,2vw,24px); letter-spacing:.03em; color:var(--cream); background:var(--lapis); padding:6px 12px 5px; white-space:nowrap; }
-.mb-word:nth-of-type(2n) { background:var(--terra); }
-.mb-word:nth-of-type(3n) { background:var(--cream); color:var(--lapis); outline:2px solid var(--lapis); outline-offset:-2px; }
+.mb-word.t { background:var(--terra); }
+.mb-word.c { background:var(--cream); color:var(--lapis); outline:2px solid var(--lapis); outline-offset:-2px; }
 .mb-dia { position:absolute; left:var(--l); top:var(--t); width:18px; height:18px; background:var(--gold); transform:rotate(45deg); z-index:9; }
 @media (max-width:760px) {
   .mb { aspect-ratio:auto; display:grid; grid-template-columns:1fr 1fr; gap:22px 14px; }
   .mb-pic, .mb-word, .mb-dia { position:relative; left:auto; top:auto; width:auto; }
   .mb-pic { padding:6px 6px 26px; align-self:start; }
   .mb-pic span { font-size:11px; left:6px; right:6px; bottom:6px; }
-  .mb-word { justify-self:center; align-self:center; font-size:15px; white-space:normal; text-align:center; }
+  .mb-word { justify-self:center; align-self:center; font-size:17px; white-space:normal; text-align:center; z-index:8; }
+  .mb-word.wide { grid-column:1 / -1; }
   .mb-dia { display:none; }
 }
 
@@ -385,19 +386,18 @@ var PLAYERS = [
     <div class="kicker px">VI · The Mood</div>
     <h2>Mood board</h2>
     <div class="mb">
-      <a class="mb-pic" href="img/land-view.jpg" target="_blank" rel="noopener" style="--l:2%;--t:5%;--w:33%;--r:-3deg;--z:2"><img src="img/land-view.jpg" alt="Sunset over the foothills toward the city" loading="lazy"><span>the view</span></a>
-      <a class="mb-pic" href="img/shazdeh-garden.jpg" target="_blank" rel="noopener" style="--l:36%;--t:1%;--w:28%;--r:1.5deg;--z:4"><img src="img/shazdeh-garden.jpg" alt="Shazdeh Garden, a walled Persian garden in the desert near Mahan, Iran" loading="lazy"><span>Bagh-e Shazdeh · my uncle’s photo</span></a>
-      <a class="mb-pic" href="img/land-dreamality.jpg" target="_blank" rel="noopener" style="--l:67%;--t:3%;--w:30%;--r:4deg;--z:2"><img src="img/land-dreamality.jpg" alt="Hand-drawn plan of Hira: the Nur Dome, the pond, the trellis" loading="lazy"><span>dreamality</span></a>
-      <a class="mb-pic" href="img/earthbag-dome.jpg" target="_blank" rel="noopener" style="--l:5%;--t:47%;--w:20%;--r:-5deg;--z:3"><img src="img/earthbag-dome.jpg" alt="An earthbag dome going up by many hands" loading="lazy"><span>earth, by hand</span></a>
-      <a class="mb-pic" href="img/astralab-final-night.jpg" target="_blank" rel="noopener" style="--l:25%;--t:63%;--w:29%;--r:2.5deg;--z:5"><img src="img/astralab-final-night.jpg" alt="The Astralab community on its final night" loading="lazy"><span>the people</span></a>
-      <a class="mb-pic" href="img/earthbuilding-desert.jpg" target="_blank" rel="noopener" style="--l:63%;--t:57%;--w:34%;--r:-2.5deg;--z:3"><img src="img/earthbuilding-desert.jpg" alt="A long shadow among Joshua trees in the Mojave" loading="lazy"><span>the search</span></a>
-      <span class="mb-word" style="--l:26%;--t:53%;--r:-6deg">silk sky</span>
-      <span class="mb-word" style="--l:64%;--t:47%;--r:3deg">water at the centre</span>
-      <span class="mb-word" style="--l:2%;--t:90%;--r:-2deg">figs · passion fruit · hibiscus</span>
-      <span class="mb-word" style="--l:85%;--t:92%;--r:5deg">koi &amp; lotus</span>
-      <span class="mb-word" style="--l:56%;--t:88%;--r:-4deg">earth walls</span>
-      <span class="mb-word" style="--l:22%;--t:40%;--r:4deg">silence</span>
-      <span class="mb-dia" style="--l:61%;--t:3%" aria-hidden="true"></span><span class="mb-dia" style="--l:23%;--t:96%" aria-hidden="true"></span><span class="mb-dia" style="--l:97%;--t:50%" aria-hidden="true"></span>
+      <a class="mb-pic" href="img/shazdeh-garden.jpg" target="_blank" rel="noopener" style="--l:36%;--t:1%;--w:27%;--r:1.5deg;--z:4"><img src="img/shazdeh-garden.jpg" alt="Shazdeh Garden, a walled Persian garden in the desert near Mahan, Iran" loading="lazy"><span>Bagh-e Shazdeh, Iran</span></a>
+      <span class="mb-word" style="--l:25%;--t:44%;--r:4deg">silence</span>
+      <span class="mb-word t" style="--l:40%;--t:71%;--r:-6deg">silk sky</span>
+      <a class="mb-pic" href="img/babur-garden.jpg" target="_blank" rel="noopener" style="--l:3%;--t:4%;--w:27%;--r:-3deg;--z:3"><img src="img/babur-garden.jpg" alt="Yusuf sitting beneath a carved stone screen in Babur’s Garden, Kabul" loading="lazy"><span>Babur’s Garden, Kabul</span></a>
+      <a class="mb-pic" href="img/land-dreamality.jpg" target="_blank" rel="noopener" style="--l:68%;--t:4%;--w:29%;--r:4deg;--z:2"><img src="img/land-dreamality.jpg" alt="Hand-drawn plan of Hira: the Nur Dome, the pond, the trellis" loading="lazy"><span>dreamality</span></a>
+      <span class="mb-word t" style="--l:66%;--t:48%;--r:3deg">water / center</span>
+      <span class="mb-word c" style="--l:43%;--t:87%;--r:-4deg">earth walls</span>
+      <a class="mb-pic" href="img/astralab-final-night.jpg" target="_blank" rel="noopener" style="--l:7%;--t:57%;--w:30%;--r:2.5deg;--z:5"><img src="img/astralab-final-night.jpg" alt="The Astralab community on its final night" loading="lazy"><span>the people</span></a>
+      <a class="mb-pic" href="img/earthbuilding-desert.jpg" target="_blank" rel="noopener" style="--l:58%;--t:58%;--w:36%;--r:-2.5deg;--z:3"><img src="img/earthbuilding-desert.jpg" alt="A long shadow among Joshua trees in the Mojave" loading="lazy"><span>the search</span></a>
+      <span class="mb-word c" style="--l:3%;--t:93%;--r:-2deg">figs · passion fruit · hibiscus</span>
+      <span class="mb-word t wide" style="--l:80%;--t:93%;--r:5deg">koi &amp; lotus</span>
+      <span class="mb-dia" style="--l:63%;--t:2%" aria-hidden="true"></span><span class="mb-dia" style="--l:39%;--t:96%" aria-hidden="true"></span><span class="mb-dia" style="--l:97%;--t:52%" aria-hidden="true"></span>
     </div>
   </div>
 </section>
