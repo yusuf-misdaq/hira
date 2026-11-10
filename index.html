@@ -82,6 +82,25 @@ h2 { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:cla
 .card p { font-size:15px; line-height:1.5; margin:0; }
 
 /* added */
+.mb { position:relative; aspect-ratio:1080/860; margin-top:30px; }
+.mb-pic { position:absolute; left:var(--l); top:var(--t); width:var(--w); z-index:var(--z); transform:rotate(var(--r)); background:#FFFDF8; padding:10px 10px 34px; box-shadow:0 2px 3px rgba(42,37,33,.12), 0 10px 26px rgba(42,37,33,.18); text-decoration:none; transition:transform .25s, box-shadow .25s; }
+.mb-pic::before { content:""; position:absolute; top:-12px; left:50%; width:84px; height:24px; margin-left:-42px; background:rgba(233,196,106,.72); transform:rotate(calc(var(--r) * -1.6)); }
+.mb-pic img { width:100%; height:auto; display:block; }
+.mb-pic span { position:absolute; left:10px; right:10px; bottom:8px; font-style:italic; font-size:14px; line-height:1.2; color:var(--terra); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.mb-pic:hover, .mb-pic:focus-visible { transform:rotate(0) scale(1.04); z-index:20; box-shadow:0 4px 6px rgba(42,37,33,.14), 0 18px 40px rgba(42,37,33,.26); }
+.mb-word { position:absolute; left:var(--l); top:var(--t); z-index:8; transform:rotate(var(--r)); font-family:Anton; text-transform:uppercase; font-size:clamp(16px,2vw,24px); letter-spacing:.03em; color:var(--cream); background:var(--lapis); padding:6px 12px 5px; white-space:nowrap; }
+.mb-word:nth-of-type(2n) { background:var(--terra); }
+.mb-word:nth-of-type(3n) { background:var(--cream); color:var(--lapis); outline:2px solid var(--lapis); outline-offset:-2px; }
+.mb-dia { position:absolute; left:var(--l); top:var(--t); width:18px; height:18px; background:var(--gold); transform:rotate(45deg); z-index:9; }
+@media (max-width:760px) {
+  .mb { aspect-ratio:auto; display:grid; grid-template-columns:1fr 1fr; gap:22px 14px; }
+  .mb-pic, .mb-word, .mb-dia { position:relative; left:auto; top:auto; width:auto; }
+  .mb-pic { padding:6px 6px 26px; align-self:start; }
+  .mb-pic span { font-size:11px; left:6px; right:6px; bottom:6px; }
+  .mb-word { justify-self:center; align-self:center; font-size:15px; white-space:normal; text-align:center; }
+  .mb-dia { display:none; }
+}
+
 .elev { font-family:Anton; text-transform:uppercase; color:var(--lapis); font-size:clamp(36px,5vw,64px); line-height:1; text-align:center; margin:56px 0 0; letter-spacing:.01em; }
 .band.earth { background:#7A3F25; color:var(--cream); }
 .band.earth .kicker { color:var(--gold); }
@@ -218,6 +237,7 @@ footer { align-items:flex-end;  padding:56px 0 64px; font-size:10px; display:fle
       <li><a href="#builders">Builders</a></li>
       <li><a href="#earthbuilding">Earthbuilding</a></li>
       <li><a href="#possibilities">Possibilities</a></li>
+      <li><a href="#moodboard">Mood</a></li>
     </ul>
   </nav>
 
@@ -356,6 +376,28 @@ var PLAYERS = [
       <div class="card"><div class="n px">05</div><h4>Unincorporated Coffee</h4><p>We roast the most delicious coffee beans in Los Angeles &amp;, perhaps you already know about our Crystal Chai..?</p></div>
       <div class="card"><div class="n px">06</div><h4>The Farm</h4><p>Passion fruit, figs, roses, hibiscus, hens, eggs, an arched trellis path…</p></div>
       <div class="card"><div class="n px">07</div><h4>L.E.A.V.E.</h4><p>An off-grid / “on again” school that teaches traditional building methods, farming &amp; Sufi principles that reverse the off-grid mentality from its individualistic, subtraction mindset into one of harmony with society, integrating a visionary, new way of being.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band cream" id="moodboard">
+  <div class="wrap">
+    <div class="kicker px">VI · The Mood</div>
+    <h2>Mood board</h2>
+    <div class="mb">
+      <a class="mb-pic" href="img/land-view.jpg" target="_blank" rel="noopener" style="--l:2%;--t:5%;--w:33%;--r:-3deg;--z:2"><img src="img/land-view.jpg" alt="Sunset over the foothills toward the city" loading="lazy"><span>the view</span></a>
+      <a class="mb-pic" href="img/shazdeh-garden.jpg" target="_blank" rel="noopener" style="--l:36%;--t:1%;--w:28%;--r:1.5deg;--z:4"><img src="img/shazdeh-garden.jpg" alt="Shazdeh Garden, a walled Persian garden in the desert near Mahan, Iran" loading="lazy"><span>Bagh-e Shazdeh · my uncle’s photo</span></a>
+      <a class="mb-pic" href="img/land-dreamality.jpg" target="_blank" rel="noopener" style="--l:67%;--t:3%;--w:30%;--r:4deg;--z:2"><img src="img/land-dreamality.jpg" alt="Hand-drawn plan of Hira: the Nur Dome, the pond, the trellis" loading="lazy"><span>dreamality</span></a>
+      <a class="mb-pic" href="img/earthbag-dome.jpg" target="_blank" rel="noopener" style="--l:5%;--t:47%;--w:20%;--r:-5deg;--z:3"><img src="img/earthbag-dome.jpg" alt="An earthbag dome going up by many hands" loading="lazy"><span>earth, by hand</span></a>
+      <a class="mb-pic" href="img/astralab-final-night.jpg" target="_blank" rel="noopener" style="--l:25%;--t:63%;--w:29%;--r:2.5deg;--z:5"><img src="img/astralab-final-night.jpg" alt="The Astralab community on its final night" loading="lazy"><span>the people</span></a>
+      <a class="mb-pic" href="img/earthbuilding-desert.jpg" target="_blank" rel="noopener" style="--l:63%;--t:57%;--w:34%;--r:-2.5deg;--z:3"><img src="img/earthbuilding-desert.jpg" alt="A long shadow among Joshua trees in the Mojave" loading="lazy"><span>the search</span></a>
+      <span class="mb-word" style="--l:26%;--t:53%;--r:-6deg">silk sky</span>
+      <span class="mb-word" style="--l:64%;--t:47%;--r:3deg">water at the centre</span>
+      <span class="mb-word" style="--l:2%;--t:90%;--r:-2deg">figs · passion fruit · hibiscus</span>
+      <span class="mb-word" style="--l:85%;--t:92%;--r:5deg">koi &amp; lotus</span>
+      <span class="mb-word" style="--l:56%;--t:88%;--r:-4deg">earth walls</span>
+      <span class="mb-word" style="--l:22%;--t:40%;--r:4deg">silence</span>
+      <span class="mb-dia" style="--l:61%;--t:3%" aria-hidden="true"></span><span class="mb-dia" style="--l:23%;--t:96%" aria-hidden="true"></span><span class="mb-dia" style="--l:97%;--t:50%" aria-hidden="true"></span>
     </div>
   </div>
 </section>
