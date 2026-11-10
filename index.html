@@ -82,7 +82,7 @@ h2 { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:cla
 .card p { font-size:15px; line-height:1.5; margin:0; }
 
 /* added */
-.mb { position:relative; aspect-ratio:1080/1380; margin-top:30px; }
+.mb { position:relative; aspect-ratio:1080/1650; margin-top:30px; }
 .mb-pic { position:absolute; left:var(--l); top:var(--t); width:var(--w); z-index:var(--z); transform:rotate(var(--r)); background:#FFFDF8; padding:10px 10px 9px; box-shadow:0 2px 3px rgba(42,37,33,.12), 0 10px 26px rgba(42,37,33,.18); text-decoration:none; transition:transform .25s, box-shadow .25s; }
 .mb-pic::before { content:""; position:absolute; top:-12px; left:50%; width:84px; height:24px; margin-left:-42px; background:rgba(233,196,106,.72); transform:rotate(calc(var(--r) * -1.6)); }
 .mb-pic img { width:100%; height:auto; display:block; }
@@ -98,7 +98,7 @@ h2 { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:cla
   .mb-pic { padding:6px 6px 6px; align-self:start; }
   .mb-pic span { font-size:11px; margin-top:5px; }
   .mb-word { justify-self:center; align-self:center; font-size:17px; white-space:normal; text-align:center; z-index:8; }
-  .mb-word.wide { grid-column:1 / -1; }
+  .mb-word.wide, .mb-pic.wide { grid-column:1 / -1; }
   .mb-dia { display:none; }
 }
 
@@ -386,25 +386,26 @@ var PLAYERS = [
     <div class="kicker px">VI · The Mood</div>
     <h2>Mood board</h2>
     <div class="mb">
-      <a class="mb-pic" href="img/shazdeh-garden.jpg" target="_blank" rel="noopener" style="--l:30%;--t:1%;--w:20%;--r:1.5deg;--z:4"><img src="img/shazdeh-garden.jpg" alt="Shazdeh Garden, a walled Persian garden in the desert near Mahan, Iran" loading="lazy"><span>Bagh-e Shazdeh, Iran</span></a>
-      <span class="mb-word" style="--l:25%;--t:27%;--r:4deg">silence</span>
-      <span class="mb-word c" style="--l:56%;--t:28%;--r:-3deg">star chamber</span>
-      <a class="mb-pic" href="img/outside-in.jpg" target="_blank" rel="noopener" style="--l:38%;--t:35%;--w:20%;--r:-2deg;--z:6"><img src="img/outside-in.jpg" alt="A curving corridor of silky green walls, light rippling across the ceiling, a winding pool of water on the floor" loading="lazy"><span>outside-in</span></a>
-      <a class="mb-pic" href="img/babur-garden.jpg" target="_blank" rel="noopener" style="--l:2%;--t:2%;--w:23%;--r:-3deg;--z:3"><img src="img/babur-garden.jpg" alt="Yusuf sitting beneath a carved stone screen in Babur’s Garden, Kabul" loading="lazy"><span>Babur’s Garden, Kabul</span></a>
-      <span class="mb-word t" style="--l:4%;--t:61%;--r:3deg">water / center</span>
-      <span class="mb-word t" style="--l:55%;--t:58%;--r:-6deg">silk sky</span>
-      <a class="mb-pic" href="img/ubaydullah-samarkand.jpg" target="_blank" rel="noopener" style="--l:3%;--t:32%;--w:21%;--r:2deg;--z:5"><img src="img/ubaydullah-samarkand.jpg" alt="Yusuf in a white turban before the tiled portal of the shrine of Ubaydullah Ahrar, Samarkand" loading="lazy"><span>S. Ubaydullah Al-Ahrar (qs), Samarkand</span></a>
-      <a class="mb-pic" href="img/bibi-khanym-samarkand.jpg" target="_blank" rel="noopener" style="--l:70%;--t:31%;--w:24%;--r:3deg;--z:4"><img src="img/bibi-khanym-samarkand.jpg" alt="The towering tiled portal of the Bibi Khanym mosque, Samarkand" loading="lazy"><span>Bibi Khanom, Samarkand</span></a>
-      <span class="mb-word c" style="--l:28%;--t:61%;--r:-2deg">crème minimalism /<br>spiritual maximalism</span>
-      <span class="mb-word" style="--l:37%;--t:95%;--r:3deg">rammed earth</span>
-      <a class="mb-pic" href="img/land-dreamality.jpg" target="_blank" rel="noopener" style="--l:66%;--t:3%;--w:29%;--r:4deg;--z:2"><img src="img/land-dreamality.jpg" alt="Hand-drawn plan of Hira: the Nur Dome, the pond, the trellis" loading="lazy"><span>dreamality</span></a>
-      <a class="mb-pic" href="img/astralab-final-night.jpg" target="_blank" rel="noopener" style="--l:4%;--t:69%;--w:27%;--r:2.5deg;--z:5"><img src="img/astralab-final-night.jpg" alt="The Astralab community on its final night" loading="lazy"><span>the people</span></a>
-      <span class="mb-word c" style="--l:64%;--t:93%;--r:-4deg">earth walls</span>
-      <span class="mb-word c" style="--l:2%;--t:95%;--r:-2deg">figs · passion fruit · hibiscus</span>
-      <a class="mb-pic" href="img/earthbuilding-desert.jpg" target="_blank" rel="noopener" style="--l:60%;--t:70%;--w:32%;--r:-2.5deg;--z:3"><img src="img/earthbuilding-desert.jpg" alt="A long shadow among Joshua trees in the Mojave" loading="lazy"><span>the search</span></a>
-      <a class="mb-pic" href="img/istanbul.jpg" target="_blank" rel="noopener" style="--l:38%;--t:69%;--w:20%;--r:-3deg;--z:6"><img src="img/istanbul.jpg" alt="Yusuf looking up at a painted golden vault, Istanbul" loading="lazy"><span>Ottoman/Istanbul</span></a>
-      <span class="mb-word t" style="--l:84%;--t:95%;--r:5deg">koi &amp; lotus</span>
-      <span class="mb-dia" style="--l:53%;--t:1%" aria-hidden="true"></span><span class="mb-dia" style="--l:33%;--t:98%" aria-hidden="true"></span><span class="mb-dia" style="--l:97%;--t:60%" aria-hidden="true"></span>
+      <a class="mb-pic" href="img/shazdeh-garden.jpg" target="_blank" rel="noopener" style="--l:30%;--t:0.8%;--w:20%;--r:1.5deg;--z:4"><img src="img/shazdeh-garden.jpg" alt="Shazdeh Garden, a walled Persian garden in the desert near Mahan, Iran" loading="lazy"><span>Bagh-e Shazdeh, Iran</span></a>
+      <span class="mb-word" style="--l:25%;--t:22.6%;--r:4deg">silence</span>
+      <span class="mb-word c" style="--l:56%;--t:23.4%;--r:-3deg">star chamber</span>
+      <a class="mb-pic" href="img/outside-in.jpg" target="_blank" rel="noopener" style="--l:38%;--t:29.3%;--w:20%;--r:-2deg;--z:6"><img src="img/outside-in.jpg" alt="A curving corridor of silky green walls, light rippling across the ceiling, a winding pool of water on the floor" loading="lazy"><span>outside-in</span></a>
+      <a class="mb-pic" href="img/babur-garden.jpg" target="_blank" rel="noopener" style="--l:2%;--t:1.7%;--w:23%;--r:-3deg;--z:3"><img src="img/babur-garden.jpg" alt="Yusuf sitting beneath a carved stone screen in Babur’s Garden, Kabul" loading="lazy"><span>Babur’s Garden, Kabul</span></a>
+      <span class="mb-word t" style="--l:4%;--t:51.0%;--r:3deg">water / center</span>
+      <span class="mb-word t" style="--l:55%;--t:48.5%;--r:-6deg">silk sky</span>
+      <a class="mb-pic" href="img/ubaydullah-samarkand.jpg" target="_blank" rel="noopener" style="--l:3%;--t:26.8%;--w:21%;--r:2deg;--z:5"><img src="img/ubaydullah-samarkand.jpg" alt="Yusuf in a white turban before the tiled portal of the shrine of Ubaydullah Ahrar, Samarkand" loading="lazy"><span>S. Ubaydullah Al-Ahrar (qs), Samarkand</span></a>
+      <a class="mb-pic" href="img/bibi-khanym-samarkand.jpg" target="_blank" rel="noopener" style="--l:70%;--t:25.9%;--w:24%;--r:3deg;--z:4"><img src="img/bibi-khanym-samarkand.jpg" alt="The towering tiled portal of the Bibi Khanym mosque, Samarkand" loading="lazy"><span>Bibi Khanom, Samarkand</span></a>
+      <span class="mb-word c" style="--l:28%;--t:51.0%;--r:-2deg">crème minimalism /<br>spiritual maximalism</span>
+      <span class="mb-word" style="--l:68%;--t:81%;--r:3deg">rammed earth</span>
+      <a class="mb-pic" href="img/land-dreamality.jpg" target="_blank" rel="noopener" style="--l:66%;--t:2.5%;--w:29%;--r:4deg;--z:2"><img src="img/land-dreamality.jpg" alt="Hand-drawn plan of Hira: the Nur Dome, the pond, the trellis" loading="lazy"><span>dreamality</span></a>
+      <a class="mb-pic" href="img/astralab-final-night.jpg" target="_blank" rel="noopener" style="--l:4%;--t:57.7%;--w:27%;--r:2.5deg;--z:5"><img src="img/astralab-final-night.jpg" alt="The Astralab community on its final night" loading="lazy"><span>the people</span></a>
+      <span class="mb-word c" style="--l:70%;--t:91%;--r:-4deg">earth walls</span>
+      <span class="mb-word c" style="--l:2%;--t:81%;--r:-2deg">figs · passion fruit · hibiscus</span>
+      <a class="mb-pic" href="img/earthbuilding-desert.jpg" target="_blank" rel="noopener" style="--l:60%;--t:58.5%;--w:32%;--r:-2.5deg;--z:3"><img src="img/earthbuilding-desert.jpg" alt="A long shadow among Joshua trees in the Mojave" loading="lazy"><span>the search</span></a>
+      <a class="mb-pic" href="img/istanbul.jpg" target="_blank" rel="noopener" style="--l:38%;--t:57.7%;--w:20%;--r:-3deg;--z:6"><img src="img/istanbul.jpg" alt="Yusuf looking up at a painted golden vault, Istanbul" loading="lazy"><span>Ottoman/Istanbul</span></a>
+      <span class="mb-word t" style="--l:8%;--t:90%;--r:5deg">koi &amp; lotus</span>
+      <span class="mb-dia" style="--l:53%;--t:0.8%" aria-hidden="true"></span><span class="mb-dia" style="--l:90%;--t:87%" aria-hidden="true"></span><span class="mb-dia" style="--l:97%;--t:50.2%" aria-hidden="true"></span>
+      <a class="mb-pic wide" href="img/hormuz-superadobe.jpg" target="_blank" rel="noopener" style="--l:31%;--t:77%;--w:34%;--r:1.5deg;--z:5"><img src="img/hormuz-superadobe.jpg" alt="Clusters of colourful SuperAdobe domes by the sea on Hormuz Island" loading="lazy"><span>SuperAdobe, Hormuz Island</span></a>
     </div>
   </div>
 </section>
