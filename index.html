@@ -42,6 +42,8 @@ h1 { font-family:Anton; font-weight:400; font-size:clamp(110px, 19vw, 230px); li
 .lede { font-style:italic; font-size:21px; max-width:28ch; margin:0 0 28px; }
 .btn { display:inline-block; font-family:"Press Start 2P"; font-size:11px; color:var(--lapis); background:var(--gold); padding:14px 18px; text-decoration:none; border:0; box-shadow: none; }
 .btn:hover { background:var(--cream); }
+.btn.quiet { background:transparent; color:var(--lapis); outline:3px solid var(--lapis); outline-offset:-3px; font-size:10px; }
+.btn.quiet:hover { background:var(--lapis); color:var(--cream); }
 .btn.ghost { background:transparent; color:var(--cream); outline:3px solid var(--cream); outline-offset:-3px; margin-left:12px; }
 .dome { width:100%; height:auto; display:block; image-rendering:pixelated; }
 
@@ -236,7 +238,6 @@ footer { align-items:flex-end;  padding:56px 0 64px; font-size:10px; display:fle
     <ul class="px">
       <li><a href="#cave">The Cave</a></li>
       <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#builders">Builders</a></li>
       <li><a href="#earthbuilding">Earthbuilding</a></li>
       <li><a href="#possibilities">Possibilities</a></li>
       <li><a href="#moodboard">Mood</a></li>
@@ -298,12 +299,12 @@ footer { align-items:flex-end;  padding:56px 0 64px; font-size:10px; display:fle
   <div class="wrap bgrid">
     <div class="b-intro">
       <div class="kicker px">III · The Builders</div>
-      <h2>High scores</h2>
-      <p>We need the help of community. Five days of work on the land earns a free day at Hira. Every day logged goes on the board and no day’s work goes without you being fed.</p>
-      <p><a class="btn" href="register.html" id="register">Register here</a></p>
-      <p class="small">Register with a photo and get in the game.</p>
+      <h2>Fellow builders</h2>
+      <p>Some days, friends come up and build. The work is earth, plants and wood; lunch is always on us. Every day goes on the board, and five days earns a free day at Hira.</p>
+      <p><a class="btn quiet" href="register.html" id="register">Join a work day</a></p>
+      <p class="small">If it calls to you.</p>
     </div>
-    <a class="board" href="register.html" aria-label="High scores: register to get on the board">
+    <div class="board" aria-label="High scores">
       <h3>HIGH SCORES</h3>
       <table>
         <tr><td>1.</td><td>YJM</td><td>786 XP</td></tr>
@@ -314,8 +315,7 @@ footer { align-items:flex-end;  padding:56px 0 64px; font-size:10px; display:fle
         <tr><td>6.</td><td>TTY</td><td>000 XP</td></tr>
       </table>
       <p class="px" style="text-align:center;font-size:8px;line-height:1.8;color:var(--cream);opacity:.75;margin:18px 0 0">100 XP A DAY<br>500 XP = FREE DAY AT HIRA</p>
-      <p class="px blink" style="text-align:center;font-size:10px;color:var(--gold);margin:16px 0 0">PRESS START</p>
-    </a>
+    </div>
     <div class="b-player"><div class="roster" id="roster" aria-label="Players"></div>
 <script>
 /* The players. To add someone: put their photo in img/players/ and add a line here.
