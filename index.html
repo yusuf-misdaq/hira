@@ -158,9 +158,7 @@ button.quest { font-family:"Press Start 2P", monospace; letter-spacing:.06em; bo
 /* the circle */
 .ring-wrap { display:flex; flex-direction:column; align-items:center; margin-top:10px; }
 .ring { width:min(560px, 88vw); height:auto; overflow:visible; }
-.ring .spin { transform-origin:300px 300px; animation:ringspin 90s linear infinite; }
-.ring .lab { font-family:Anton; font-size:46px; text-transform:uppercase; letter-spacing:.02em; transform-box:fill-box; transform-origin:center; animation:ringspin 90s linear infinite reverse; pointer-events:none; }
-.ring:hover .spin, .ring:hover .lab, .ring:focus-within .spin, .ring:focus-within .lab { animation-play-state:paused; }
+.ring .lab { font-family:Anton; font-size:46px; text-transform:uppercase; letter-spacing:.02em; pointer-events:none; }
 .ring .seg { cursor:pointer; outline:none; transition:transform .25s ease, opacity .25s ease; }
 .ring:hover .seg, .ring:focus-within .seg { opacity:.45; }
 .ring .seg:hover, .ring .seg:focus-visible { opacity:1; transform:translate(var(--dx),var(--dy)); }
@@ -168,8 +166,6 @@ button.quest { font-family:"Press Start 2P", monospace; letter-spacing:.06em; bo
 .ring-hint { font-size:9px; color:var(--terra); margin:26px 0 0; }
 .ring-hint .h-off { display:none; } @media (hover:none) { .ring-hint .h-on { display:none; } .ring-hint .h-off { display:inline; } }
 .band.cream + .band.cream { border-top:2px solid rgba(30,60,140,.12); }
-@keyframes ringspin { to { transform:rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .ring .spin, .ring .lab { animation:none; } }
 #circle-modal { padding:0; border:0; background:transparent; max-width:min(680px, calc(100vw - 32px)); width:100%; }
 #circle-modal::backdrop { background:rgba(14,27,66,.72); }
 #circle-modal .qm { max-height:calc(100vh - 48px); max-height:calc(100dvh - 48px); overflow:auto; }
@@ -524,6 +520,22 @@ var PLAYERS = [
   });
   d.addEventListener('click',function(e){ if(e.target===d) close(); });
   d.querySelector('.qm-x').addEventListener('click',close);
+})();
+</script>
+<script>
+(function(){
+  var svg=document.querySelector('.ring'); if(!svg) return;
+  var spin=svg.querySelector('.spin'), labs=[].slice.call(svg.querySelectorAll('.lab'));
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var a=0, paused=false, last=null, PERIOD=90000;
+  function draw(){ spin.setAttribute('transform','rotate('+a.toFixed(3)+' 300 300)');
+    labs.forEach(function(t){ t.setAttribute('transform','rotate('+(-a).toFixed(3)+' '+t.getAttribute('x')+' '+t.getAttribute('y')+')'); }); }
+  function tick(ts){ if(last!==null && !paused) a=(a+(ts-last)*360/PERIOD)%360; last=ts; draw(); requestAnimationFrame(tick); }
+  svg.addEventListener('mouseenter',function(){ paused=true; });
+  svg.addEventListener('mouseleave',function(){ paused=false; });
+  svg.addEventListener('focusin',function(){ paused=true; });
+  svg.addEventListener('focusout',function(){ paused=false; });
+  draw(); if(!still) requestAnimationFrame(tick);
 })();
 </script>
 <script src="campaign.js"></script>
