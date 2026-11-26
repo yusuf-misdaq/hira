@@ -165,7 +165,9 @@ button.quest { font-family:"Press Start 2P", monospace; letter-spacing:.06em; bo
 .ring .seg:focus-visible path { stroke:var(--terra); stroke-width:5; }
 .ring-hint { font-size:9px; color:var(--terra); margin:26px 0 0; }
 .ring-hint .h-off { display:none; } @media (hover:none) { .ring-hint .h-on { display:none; } .ring-hint .h-off { display:inline; } }
-.band.cream + .band.cream { border-top:2px solid rgba(30,60,140,.12); }
+.band.cream + .band.cream { position:relative; }
+.band.cream + .band.cream::before { content:""; position:absolute; top:-12px; left:0; right:0; height:24px;
+  background:radial-gradient(circle, var(--terra) 11.5px, transparent 12px) center / 48px 24px repeat-x; }
 #circle-modal { padding:0; border:0; background:transparent; max-width:min(680px, calc(100vw - 32px)); width:100%; }
 #circle-modal::backdrop { background:rgba(14,27,66,.72); }
 #circle-modal .qm { max-height:calc(100vh - 48px); max-height:calc(100dvh - 48px); overflow:auto; }
