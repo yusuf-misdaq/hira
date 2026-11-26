@@ -79,6 +79,10 @@ h2 { font-family:Anton; font-weight:400; text-transform:uppercase; font-size:cla
 /* possibilities */
 .cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:16px; margin-top:28px; }
 .card { background:var(--lapis-deep); color:var(--cream); padding:22px 20px 24px; border:0; }
+.card.link { display:block; text-decoration:none; transition:background .15s; }
+.card.link:hover { background:#24479f; }
+.card .go { display:inline-block; margin-top:16px; font-size:9px; color:var(--gold); border-bottom:2px solid var(--gold); padding-bottom:6px; }
+.card.link:hover .go { color:#fff; border-color:#fff; }
 .card .n { font-size:10px; color:var(--gold); }
 .card h4 { font-family:Anton; font-weight:400; font-size:28px; line-height:1; text-transform:uppercase; margin:12px 0 10px; }
 .card p { font-size:15px; line-height:1.5; margin:0; }
@@ -151,6 +155,26 @@ h1.hero-logo svg { width:min(520px, 100%); height:auto; display:block; }
 a.board { display:block; text-decoration:none; color:inherit; cursor:pointer; }
 a.board:hover { outline:4px solid var(--lapis); outline-offset:4px; }
 button.quest { font-family:"Press Start 2P", monospace; letter-spacing:.06em; border:0; cursor:pointer; text-align:left; }
+/* the circle */
+.ring-wrap { display:flex; flex-direction:column; align-items:center; margin-top:10px; }
+.ring { width:min(560px, 88vw); height:auto; overflow:visible; }
+.ring .spin { transform-origin:300px 300px; animation:ringspin 90s linear infinite; }
+.ring .lab { font-family:Anton; font-size:46px; text-transform:uppercase; letter-spacing:.02em; transform-box:fill-box; transform-origin:center; animation:ringspin 90s linear infinite reverse; pointer-events:none; }
+.ring:hover .spin, .ring:hover .lab, .ring:focus-within .spin, .ring:focus-within .lab { animation-play-state:paused; }
+.ring .seg { cursor:pointer; outline:none; transition:transform .25s ease, opacity .25s ease; }
+.ring:hover .seg, .ring:focus-within .seg { opacity:.45; }
+.ring .seg:hover, .ring .seg:focus-visible { opacity:1; transform:translate(var(--dx),var(--dy)); }
+.ring .seg:focus-visible path { stroke:var(--terra); stroke-width:5; }
+.ring-hint { font-size:9px; color:var(--terra); margin:26px 0 0; }
+.ring-hint .h-off { display:none; } @media (hover:none) { .ring-hint .h-on { display:none; } .ring-hint .h-off { display:inline; } }
+.band.cream + .band.cream { border-top:2px solid rgba(30,60,140,.12); }
+@keyframes ringspin { to { transform:rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ring .spin, .ring .lab { animation:none; } }
+#circle-modal { padding:0; border:0; background:transparent; max-width:min(680px, calc(100vw - 32px)); width:100%; }
+#circle-modal::backdrop { background:rgba(14,27,66,.72); }
+#circle-modal .qm { max-height:calc(100vh - 48px); max-height:calc(100dvh - 48px); overflow:auto; }
+#circle-modal .qm a { color:var(--lapis); text-decoration-color:var(--gold); text-decoration-thickness:2px; }
+#circle-modal .credit { font-size:15px; font-style:italic; color:#6E655C; }
 #quest-modal { padding:0; border:0; background:transparent; max-width:min(620px, calc(100vw - 32px)); width:100%; }
 #quest-modal::backdrop { background:rgba(14,27,66,.72); }
 .qm { position:relative; background:var(--cream); color:var(--ink); padding:40px 36px 30px; outline:6px solid var(--gold); outline-offset:-6px; }
@@ -238,9 +262,9 @@ footer { align-items:flex-end;  padding:56px 0 64px; font-size:10px; display:fle
     <ul class="px">
       <li><a href="#cave">The Cave</a></li>
       <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#moodboard">Vision</a></li>
       <li><a href="#earthbuilding">Earthbuilding</a></li>
       <li><a href="#possibilities">Possibilities</a></li>
-      <li><a href="#moodboard">Mood</a></li>
     </ul>
   </nav>
 
@@ -295,10 +319,40 @@ footer { align-items:flex-end;  padding:56px 0 64px; font-size:10px; display:fle
   </div>
 </section>
 
+<section class="band cream" id="moodboard">
+  <div class="wrap">
+    <div class="kicker px">III · Firasa / Vision</div>
+    <h2>Board</h2>
+    <div class="mb">
+      <a class="mb-pic" href="img/babur-garden.jpg" target="_blank" rel="noopener" style="--l:2%;--t:1.7%;--w:23%;--r:-3deg;--z:3"><img src="img/babur-garden.jpg" alt="Yusuf sitting beneath a carved stone screen in Babur’s Garden, Kabul" loading="lazy"><span>Babur’s Garden, Kabul</span></a>
+      <span class="mb-word" style="--l:25%;--t:22.6%;--r:4deg">silence</span>
+      <span class="mb-word c" style="--l:56%;--t:23.4%;--r:-3deg">star chamber</span>
+      <a class="mb-pic" href="img/outside-in.jpg" target="_blank" rel="noopener" style="--l:35%;--t:1.5%;--w:21%;--r:-1.5deg;--z:6"><img src="img/outside-in.jpg" alt="A curving corridor of silky green walls, light rippling across the ceiling, a winding pool of water on the floor" loading="lazy"><span>outside-in</span></a>
+      <a class="mb-pic" href="img/shazdeh-garden.jpg" target="_blank" rel="noopener" style="--l:70%;--t:0.8%;--w:20%;--r:2.5deg;--z:4"><img src="img/shazdeh-garden.jpg" alt="Shazdeh Garden, a walled Persian garden in the desert near Mahan, Iran" loading="lazy"><span>Bagh-e Shazdeh, Iran</span></a>
+      <span class="mb-word t" style="--l:4%;--t:51.0%;--r:3deg">water / center</span>
+      <span class="mb-word t" style="--l:55%;--t:48.5%;--r:-6deg">silk sky</span>
+      <a class="mb-pic" href="img/ubaydullah-samarkand.jpg" target="_blank" rel="noopener" style="--l:3%;--t:26.8%;--w:21%;--r:2deg;--z:5"><img src="img/ubaydullah-samarkand.jpg" alt="Yusuf in a white turban before the tiled portal of the shrine of Ubaydullah Ahrar, Samarkand" loading="lazy"><span>S. Ubaydullah Al-Ahrar (qs), Samarkand</span></a>
+      <a class="mb-pic" href="img/bibi-khanym-samarkand.jpg" target="_blank" rel="noopener" style="--l:70%;--t:28%;--w:24%;--r:3deg;--z:4"><img src="img/bibi-khanym-samarkand.jpg" alt="The towering tiled portal of the Bibi Khanym mosque, Samarkand" loading="lazy"><span>Bibi Khanom, Samarkand</span></a>
+      <span class="mb-word c" style="--l:28%;--t:51.0%;--r:-2deg">crème minimalism /<br>spiritual maximalism</span>
+      <span class="mb-word" style="--l:68%;--t:81%;--r:3deg">rammed earth</span>
+      <a class="mb-pic" href="img/land-dreamality.jpg" target="_blank" rel="noopener" style="--l:35%;--t:29%;--w:27%;--r:3deg;--z:2"><img src="img/land-dreamality.jpg" alt="Hand-drawn plan of Hira: the Nur Dome, the pond, the trellis" loading="lazy"><span>dreamality</span></a>
+      <a class="mb-pic" href="img/astralab-final-night.jpg" target="_blank" rel="noopener" style="--l:4%;--t:57.7%;--w:27%;--r:2.5deg;--z:5"><img src="img/astralab-final-night.jpg" alt="The Astralab community on its final night" loading="lazy"><span>the people</span></a>
+      <span class="mb-word c" style="--l:70%;--t:91%;--r:-4deg">earth walls</span>
+      <span class="mb-word c" style="--l:2%;--t:81%;--r:-2deg">figs · passion fruit · hibiscus</span>
+      <a class="mb-pic" href="img/earthbuilding-desert.jpg" target="_blank" rel="noopener" style="--l:60%;--t:58.5%;--w:32%;--r:-2.5deg;--z:3"><img src="img/earthbuilding-desert.jpg" alt="A long shadow among Joshua trees in the Mojave" loading="lazy"><span>the search</span></a>
+      <a class="mb-pic" href="img/istanbul.jpg" target="_blank" rel="noopener" style="--l:38%;--t:57.7%;--w:20%;--r:-3deg;--z:6"><img src="img/istanbul.jpg" alt="Yusuf looking up at a painted golden vault, Istanbul" loading="lazy"><span>Ottoman/Istanbul</span></a>
+      <span class="mb-word t" style="--l:8%;--t:90%;--r:5deg">koi &amp; lotus</span>
+      <span class="mb-dia" style="--l:53%;--t:0.8%" aria-hidden="true"></span><span class="mb-dia" style="--l:90%;--t:87%" aria-hidden="true"></span><span class="mb-dia" style="--l:97%;--t:50.2%" aria-hidden="true"></span>
+      <a class="mb-pic wide" href="img/hormuz-superadobe.jpg" target="_blank" rel="noopener" style="--l:31%;--t:77%;--w:34%;--r:1.5deg;--z:5"><img src="img/hormuz-superadobe.jpg" alt="Clusters of colourful SuperAdobe domes by the sea on Hormuz Island" loading="lazy"><span>SuperAdobe, Hormuz Island</span></a>
+    </div>
+    <p class="mb-credit">Hormuz Island photo: ZAV Architects</p>
+  </div>
+</section>
+
 <section class="band cream" id="builders">
   <div class="wrap bgrid">
     <div class="b-intro">
-      <div class="kicker px">III · The Builders</div>
+      <div class="kicker px">IV · The Builders</div>
       <h2>Fellow builders</h2>
       <p>Some days, friends come up and build. The work is earth, plants and wood; lunch is always on us. Every day goes on the board, and five days earns a free day at Hira.</p>
       <p><a class="btn quiet" href="register.html" id="register">Join a work day</a></p>
@@ -357,7 +411,7 @@ var PLAYERS = [
 
 <section class="band earth" id="earthbuilding">
   <div class="wrap">
-    <div class="kicker px">IV · The Earth</div>
+    <div class="kicker px">V · The Earth</div>
     <h2><a href="earthbuilding.html">Earthbuilding</a></h2>
     <div class="eb-grid">
       <a href="earthbuilding.html"><img src="img/earthbag-dome.jpg" alt="Builders laying the upper courses of an earthbag dome" width="532" height="714" loading="lazy"></a>
@@ -369,15 +423,37 @@ var PLAYERS = [
   </div>
 </section>
 
+<section class="band cream" id="circle">
+  <div class="wrap">
+    <div class="kicker px">VI · Ashar / Khidmat / Prepping</div>
+    <div class="ring-wrap">
+      <svg class="ring" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-label="A circle in three parts: Ashar, Khidmat, Prepping">
+        <g class="spin"><g class="seg" data-k="ashar" role="button" tabindex="0" aria-label="Ashar" style="--dx:12.1px;--dy:-7.0px">
+      <path d="M305.2 297.0 L305.2 50.1 A250 250 0 0 1 519.1 420.4 Z" fill="#1E3C8C"/>
+      <text class="lab" x="429.9" y="225.0" fill="#F5EFE3" text-anchor="middle" dominant-baseline="central">Ashar</text>
+    </g><g class="seg" data-k="khidmat" role="button" tabindex="0" aria-label="Khidmat" style="--dx:0.0px;--dy:14.0px">
+      <path d="M300.0 306.0 L513.8 429.5 A250 250 0 0 1 86.2 429.5 Z" fill="#B25E37"/>
+      <text class="lab" x="300.0" y="450.0" fill="#F5EFE3" text-anchor="middle" dominant-baseline="central">Khidmat</text>
+    </g><g class="seg" data-k="prepping" role="button" tabindex="0" aria-label="Prepping" style="--dx:-12.1px;--dy:-7.0px">
+      <path d="M294.8 297.0 L80.9 420.4 A250 250 0 0 1 294.8 50.1 Z" fill="#E9C46A"/>
+      <text class="lab" x="170.1" y="225.0" fill="#1E3C8C" text-anchor="middle" dominant-baseline="central">Prepping</text>
+    </g>
+        </g>
+      </svg>
+      <p class="ring-hint px"><span class="h-on">Hover to stop · click a third</span><span class="h-off">Tap a third</span></p>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="possibilities">
   <div class="wrap">
-    <div class="kicker px">V · The Possibilities</div>
+    <div class="kicker px">VII · The Possibilities</div>
     <h2>What Hira will be</h2>
     <div class="cards">
       <div class="card"><div class="n px">01</div><h4>The Outside-In Land</h4><p>A visionary escape &amp; inner journey: soft Korean grass underfoot, outdoor walls of billowing silken fabrics, &amp; a linen shade in the sky that ripples like an ocean above an outdoor lounge. Land as art.</p></div>
-      <div class="card"><div class="n px">02</div><h4>Spiritually Informed Coaching</h4><p>One-to-one sessions drawing upon twenty years of Sufi wisdom &amp; Creativity. The world is pushing therapy hard, however its grounding is based largely on outdated European paradigms that can be incredibly problematic for people of faith. Sufi psychology is holistic, inclusive of family, does not shy away from accountability, &amp; offers creative ways of seeing &amp; working through issues.</p></div>
-      <div class="card"><div class="n px">03</div><h4>The Astralab Podcast</h4><p>Recorded in the Lapis Room, where the most interesting artists, thinkers &amp; leaders of Los Angeles escape the city to engage in thoughtful, grounded conversations.</p></div>
-      <div class="card"><div class="n px">04</div><h4>Artist Residencies</h4><p>Twice a year, Summer &amp; Winter. An artist or two have a week or two with the land all to themselves.</p></div>
+      <a class="card link" href="coaching.html"><div class="n px">02</div><h4>Spiritually Informed Coaching</h4><p>One-to-one sessions drawing upon twenty years of Sufi wisdom &amp; Creativity. The world is pushing therapy hard, however its grounding is based largely on outdated European paradigms that can be incredibly problematic for people of faith. Sufi psychology is holistic, inclusive of family, does not shy away from accountability, &amp; offers creative ways of seeing &amp; working through issues.</p><span class="go px">BOOK A SESSION →</span></a>
+      <a class="card link" href="podcast.html"><div class="n px">03</div><h4>The Astralab Podcast</h4><p>Recorded in the Lapis Room, where the most interesting artists, thinkers &amp; leaders of Los Angeles escape the city to engage in thoughtful, grounded conversations.</p><span class="go px">BE A GUEST →</span></a>
+      <a class="card link" href="residency.html"><div class="n px">04</div><h4>Artist Residencies</h4><p>Twice a year, Summer &amp; Winter. An artist or two have a week or two with the land all to themselves.</p><span class="go px">APPLY →</span></a>
       <div class="card"><div class="n px">05</div><h4>Unincorporated Coffee</h4><p>We roast the most delicious coffee beans in Los Angeles &amp;, perhaps you already know about our Crystal Chai..?</p></div>
       <div class="card"><div class="n px">06</div><h4>The Farm</h4><p>Passion fruit, figs, roses, hibiscus, hens, eggs, an arched trellis path…</p></div>
       <div class="card"><div class="n px">07</div><h4>L.E.A.V.E.</h4><p>An off-grid / “on again” school that teaches traditional building methods, farming &amp; Sufi principles that reverse the off-grid mentality from its individualistic, subtraction mindset into one of harmony with society, integrating a visionary, new way of being.</p></div>
@@ -385,35 +461,7 @@ var PLAYERS = [
   </div>
 </section>
 
-<section class="band cream" id="moodboard">
-  <div class="wrap">
-    <div class="kicker px">VI · Firasa / Mood</div>
-    <h2>Mood board</h2>
-    <div class="mb">
-      <a class="mb-pic" href="img/babur-garden.jpg" target="_blank" rel="noopener" style="--l:2%;--t:1.7%;--w:23%;--r:-3deg;--z:3"><img src="img/babur-garden.jpg" alt="Yusuf sitting beneath a carved stone screen in Babur’s Garden, Kabul" loading="lazy"><span>Babur’s Garden, Kabul</span></a>
-      <span class="mb-word" style="--l:25%;--t:22.6%;--r:4deg">silence</span>
-      <span class="mb-word c" style="--l:56%;--t:23.4%;--r:-3deg">star chamber</span>
-      <a class="mb-pic" href="img/outside-in.jpg" target="_blank" rel="noopener" style="--l:35%;--t:1.5%;--w:21%;--r:-1.5deg;--z:6"><img src="img/outside-in.jpg" alt="A curving corridor of silky green walls, light rippling across the ceiling, a winding pool of water on the floor" loading="lazy"><span>outside-in</span></a>
-      <a class="mb-pic" href="img/shazdeh-garden.jpg" target="_blank" rel="noopener" style="--l:70%;--t:0.8%;--w:20%;--r:2.5deg;--z:4"><img src="img/shazdeh-garden.jpg" alt="Shazdeh Garden, a walled Persian garden in the desert near Mahan, Iran" loading="lazy"><span>Bagh-e Shazdeh, Iran</span></a>
-      <span class="mb-word t" style="--l:4%;--t:51.0%;--r:3deg">water / center</span>
-      <span class="mb-word t" style="--l:55%;--t:48.5%;--r:-6deg">silk sky</span>
-      <a class="mb-pic" href="img/ubaydullah-samarkand.jpg" target="_blank" rel="noopener" style="--l:3%;--t:26.8%;--w:21%;--r:2deg;--z:5"><img src="img/ubaydullah-samarkand.jpg" alt="Yusuf in a white turban before the tiled portal of the shrine of Ubaydullah Ahrar, Samarkand" loading="lazy"><span>S. Ubaydullah Al-Ahrar (qs), Samarkand</span></a>
-      <a class="mb-pic" href="img/bibi-khanym-samarkand.jpg" target="_blank" rel="noopener" style="--l:70%;--t:28%;--w:24%;--r:3deg;--z:4"><img src="img/bibi-khanym-samarkand.jpg" alt="The towering tiled portal of the Bibi Khanym mosque, Samarkand" loading="lazy"><span>Bibi Khanom, Samarkand</span></a>
-      <span class="mb-word c" style="--l:28%;--t:51.0%;--r:-2deg">crème minimalism /<br>spiritual maximalism</span>
-      <span class="mb-word" style="--l:68%;--t:81%;--r:3deg">rammed earth</span>
-      <a class="mb-pic" href="img/land-dreamality.jpg" target="_blank" rel="noopener" style="--l:35%;--t:29%;--w:27%;--r:3deg;--z:2"><img src="img/land-dreamality.jpg" alt="Hand-drawn plan of Hira: the Nur Dome, the pond, the trellis" loading="lazy"><span>dreamality</span></a>
-      <a class="mb-pic" href="img/astralab-final-night.jpg" target="_blank" rel="noopener" style="--l:4%;--t:57.7%;--w:27%;--r:2.5deg;--z:5"><img src="img/astralab-final-night.jpg" alt="The Astralab community on its final night" loading="lazy"><span>the people</span></a>
-      <span class="mb-word c" style="--l:70%;--t:91%;--r:-4deg">earth walls</span>
-      <span class="mb-word c" style="--l:2%;--t:81%;--r:-2deg">figs · passion fruit · hibiscus</span>
-      <a class="mb-pic" href="img/earthbuilding-desert.jpg" target="_blank" rel="noopener" style="--l:60%;--t:58.5%;--w:32%;--r:-2.5deg;--z:3"><img src="img/earthbuilding-desert.jpg" alt="A long shadow among Joshua trees in the Mojave" loading="lazy"><span>the search</span></a>
-      <a class="mb-pic" href="img/istanbul.jpg" target="_blank" rel="noopener" style="--l:38%;--t:57.7%;--w:20%;--r:-3deg;--z:6"><img src="img/istanbul.jpg" alt="Yusuf looking up at a painted golden vault, Istanbul" loading="lazy"><span>Ottoman/Istanbul</span></a>
-      <span class="mb-word t" style="--l:8%;--t:90%;--r:5deg">koi &amp; lotus</span>
-      <span class="mb-dia" style="--l:53%;--t:0.8%" aria-hidden="true"></span><span class="mb-dia" style="--l:90%;--t:87%" aria-hidden="true"></span><span class="mb-dia" style="--l:97%;--t:50.2%" aria-hidden="true"></span>
-      <a class="mb-pic wide" href="img/hormuz-superadobe.jpg" target="_blank" rel="noopener" style="--l:31%;--t:77%;--w:34%;--r:1.5deg;--z:5"><img src="img/hormuz-superadobe.jpg" alt="Clusters of colourful SuperAdobe domes by the sea on Hormuz Island" loading="lazy"><span>SuperAdobe, Hormuz Island</span></a>
-    </div>
-    <p class="mb-credit">Hormuz Island photo: ZAV Architects</p>
-  </div>
-</section>
+
 
 <div class="wrap">
   <footer class="px"><a class="mark foot-mark" href="#page-top" aria-label="Hira, home"><svg viewBox="4.05 -55.95 321.90 213.08" xmlns="http://www.w3.org/2000/svg" role="img"><title>Hira</title><path fill="#F5EFE3" d="M33.75 -30.0V78.0Q33.75 86.28292083740234 36.26755905151367 90.7537612915039Q37.86443328857422 93.58959197998047 39.5627326965332 93.50467681884766Q41.584659576416016 93.40357971191406 43.63686752319336 89.88995361328125Q46.61216735839844 84.7958755493164 47.25952911376953 75.73282623291016Q48.3936653137207 61.365753173828125 53.09811019897461 52.736297607421875Q57.94504165649414 43.84547424316406 65.20316314697266 43.023799896240234Q72.62519073486328 42.183570861816406 78.1074447631836 49.92686462402344Q83.16252899169922 57.06681823730469 84.72103881835938 69.53486633300781Q84.7288818359375 69.59756469726562 84.7345962524414 69.66049194335938Q85.70849609375 80.37342834472656 90.0381851196289 86.44859313964844Q93.44209289550781 91.2247543334961 97.62865447998047 91.50859069824219Q101.54624938964844 91.7741928100586 104.65362548828125 87.90270233154297Q108.62338256835938 82.95677185058594 109.2588882446289 73.74198913574219L112.26370239257812 38.679744720458984Q112.70816802978516 33.79011917114258 114.71265411376953 30.748825073242188Q117.1834716796875 27.0 121.0 27.0Q124.8165283203125 27.0 127.28734588623047 30.748825073242188Q129.29183959960938 33.790130615234375 129.73460388183594 38.660491943359375Q129.74029541015625 38.72319793701172 129.743896484375 38.78606414794922L131.7388916015625 73.69852447509766Q132.70574951171875 82.88407897949219 136.85899353027344 87.84187316894531Q140.1558837890625 91.77743530273438 144.121337890625 91.50859069824219Q148.2598419189453 91.22801208496094 151.4812469482422 86.51033782958984Q155.6088409423828 80.4655532836914 156.25686645507812 69.77313995361328Q156.25942993164062 69.73082733154297 156.26295471191406 69.6885757446289L158.26295471191406 45.68857955932617Q158.26724243164062 45.63716125488281 158.27293395996094 45.585880279541016Q159.1642303466797 37.564208984375 162.86170959472656 35.21126937866211Q166.2568817138672 33.05070877075195 171.3709259033203 35.496158599853516L206.0775604248047 45.90814971923828L231.0775604248047 53.40814971923828Q231.45860290527344 53.52246856689453 231.80718994140625 53.71419143676758Q239.75 58.082740783691406 239.75 68.80000305175781V86.0Q239.75 89.92340087890625 241.37570190429688 91.75862884521484Q243.12857055664062 93.73741149902344 247.80618286132812 94.78582763671875Q255.19049072265625 96.44091033935547 285.617431640625 96.2944107055664Q294.8411865234375 96.25 300.0 96.25Q303.75 96.25 303.75 100.0Q303.75 103.75 300.0 103.75Q294.8583068847656 103.75 285.653564453125 103.79431915283203Q254.3781280517578 103.94490814208984 246.16586303710938 102.104248046875Q237.0253448486328 100.05553436279297 233.88870239257812 93.75016021728516Q233.845703125 93.79975891113281 233.80335998535156 93.8480224609375Q227.9635009765625 100.50485229492188 219.64466857910156 99.992919921875Q211.20230102539062 99.473388671875 205.54678344726562 91.70760345458984Q199.70799255371094 83.69015502929688 199.26161193847656 70.43108367919922Q198.5841827392578 66.77354431152344 199.528076171875 59.10441970825195Q200.00718688964844 55.211692810058594 200.59950256347656 52.094970703125L168.9224395751953 42.59185028076172Q168.61244201660156 42.49884796142578 168.3229522705078 42.354103088378906Q167.29246520996094 41.838863372802734 166.72286987304688 41.709800720214844Q166.16293334960938 42.51906204223633 165.73269653320312 46.36368179321289L163.7405242919922 70.26963806152344Q162.9610137939453 82.9984130859375 157.6750030517578 90.73966217041016Q152.4001922607422 98.46452331542969 144.62843322753906 98.99142456054688Q136.85667419433594 99.51832580566406 131.10975646972656 92.65812683105469Q125.46280670166016 85.91726684570312 124.26990509033203 74.38587188720703Q124.26103210449219 74.30006408691406 124.256103515625 74.21393585205078L122.25982666015625 39.279109954833984Q121.9833755493164 36.33002853393555 121.02515411376953 34.87617492675781Q121.01243591308594 34.85687255859375 121.0 34.83842086791992Q120.98756408691406 34.85687255859375 120.97484588623047 34.87617492675781Q120.0068359375 36.344879150390625 119.73629760742188 39.320255279541016L116.7411117553711 74.25801086425781Q115.9438705444336 85.81804656982422 110.50262451171875 92.59729766845703Q104.94479370117188 99.52181243896484 97.12134552001953 98.99140930175781Q89.39410400390625 98.467529296875 83.9305648803711 90.80140686035156Q78.4370346069336 83.09320068359375 77.27131652832031 70.40419006347656Q75.94247436523438 59.84844970703125 71.9863052368164 54.26063537597656Q69.06501770019531 50.134521484375 66.04683685302734 50.476200103759766Q62.66352844238281 50.859214782714844 59.68313980102539 56.326202392578125Q55.74448776245117 63.55094909667969 54.74047088623047 76.26717376708984Q53.96875 87.07125854492188 50.11313247680664 93.67254638671875Q46.0135612487793 100.6915054321289 39.9372673034668 100.99532318115234Q33.60558319091797 101.31190490722656 29.732439041137695 94.4337387084961Q26.25 88.24940490722656 26.25 78.0V-30.0Q26.25 -33.75 30.0 -33.75Q33.75 -33.75 33.75 -30.0ZM232.25 76.0V68.80000305175781Q232.25 62.76235580444336 228.503173828125 60.46607208251953L207.8254852294922 54.26276397705078Q207.36309814453125 56.84233093261719 206.971923828125 60.02058029174805Q206.13497924804688 66.82074737548828 206.66070556640625 69.18650817871094Q206.73826599121094 69.5355224609375 206.74847412109375 69.89289855957031Q207.06741333007812 81.0555419921875 211.60946655273438 87.29239654541016Q215.18667602539062 92.20439147949219 220.10533142089844 92.507080078125Q224.7518768310547 92.79302215576172 228.16539001464844 88.9019775390625Q232.25 84.2459487915039 232.25 76.0Z"/><path fill="#E9C46A" d="M123.44000244140625 -5.949999809265137Q123.78697204589844 -6.296972751617432 124.03364562988281 -6.236281871795654Q124.22064208984375 -6.190274715423584 124.3499984741211 -5.909999847412109L128.4600067138672 2.9200000762939453Q129.05999755859375 4.210000038146973 127.70999908447266 5.460000038146973L118.48999786376953 14.029999732971191Q118.08631896972656 14.403999328613281 117.83769989013672 14.319851875305176Q117.66752624511719 14.262253761291504 117.56999969482422 13.989999771118164L114.30999755859375 4.909999847412109Q113.83000183105469 3.5799999237060547 115.05999755859375 2.359999895095825Q119.41999816894531 -1.2100000381469727 123.44000244140625 -5.949999809265137ZM224.35000610351562 118.8499984741211Q224.72166442871094 118.5904312133789 224.9332275390625 118.68583679199219Q225.0802764892578 118.75215911865234 225.14999389648438 118.98999786376953L227.44000244140625 126.97000122070312Q227.77000427246094 128.13999938964844 226.47000122070312 128.97999572753906L217.58999633789062 134.75Q217.19854736328125 135.0029296875 216.98843383789062 134.89682006835938Q216.8496551513672 134.8267364501953 216.7899932861328 134.60000610351562L214.77999877929688 126.8499984741211Q214.49000549316406 125.70999908447266 215.75 124.83999633789062Q220.14999389648438 122.36000061035156 224.35000610351562 118.8499984741211Z"/></svg></a><span class="copy">© Y. Misdaq <span id="yr">2026</span></span><a class="to-top" href="#page-top">A PROMISE</a></footer>
@@ -443,6 +491,37 @@ var PLAYERS = [
   }
   function close(){ if(d.close) d.close(); else d.removeAttribute('open'); }
   document.querySelectorAll('.quest[data-q]').forEach(function(b){ b.addEventListener('click',function(){ open(b.getAttribute('data-q')); }); });
+  d.addEventListener('click',function(e){ if(e.target===d) close(); });
+  d.querySelector('.qm-x').addEventListener('click',close);
+})();
+</script>
+<dialog id="circle-modal" aria-labelledby="cm-title">
+  <div class="qm">
+    <button type="button" class="qm-x" aria-label="Close"><svg viewBox="0 0 7 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></button>
+    <div class="qm-n px" id="cm-n"></div>
+    <h3 id="cm-title"></h3>
+    <div id="cm-body"></div>
+  </div>
+</dialog>
+<template id="t-ashar"><p>Derived from the Arabic word <em>hashr</em>, meaning gathering or assembling; a form of collective, voluntary labour that members of an extended family, village, tribe or even a district carry out for each other or for a common cause.</p><p>Operates on the simple principle of reciprocal obligation: when a family or community needs labour for a task too large for one household to manage, villagers are called upon to help. A household who helps others today can also expect the same support when their turn comes. This creates a cycle of mutual dependency that reinforces social bonds across households and villages. This is an integral part of the famous Pashtunwali code of honour.</p><p class="credit">Paraphrased from <a href="https://www.ecoi.net/en/document/2142869.html" target="_blank" rel="noopener">Sharif Akram</a></p></template>
+<template id="t-khidmat"><p>Used in Sufi circles. The way spiritual knowledge is disseminated is through voluntary service under the watchful eye of a teacher.</p><p>Modern reference: Mr. Miyagi teaching Daniel-san deeper philosophies via Bonsai tree pruning, applying wax to polish automobiles and painting fences. Khidmat looks like free labour to the modern eye, but it is something initiated by the seeker.</p><p>During most of the 2 year run of Astralab, whenever I had a free moment, I was driving 30 minutes out of LA to my teacher’s farm, where, along with a small group of fellow students, we created a bountiful garden of flowers, fruiting trees, irrigation, solar, mindful animal enclosures and a meditation center from one huge pile of dirt. It looks like it's been there for decades and yet was built in less than one calendar year. The spiritual growth achieved in that time is impossible to put into words, the benefit to the community is open ended and only just beginning.</p></template>
+<template id="t-prepping"><p>A modern term used by scared people focused mostly on themselves.</p></template>
+<script>
+(function(){
+  var d=document.getElementById('circle-modal');
+  var M={ashar:['Afghan community building','Ashar'], khidmat:['Literally, service','Khidmat'], prepping:['A modern term','Prepping']};
+  function open(k){ var m=M[k]; if(!m) return;
+    document.getElementById('cm-n').textContent=m[0].toUpperCase();
+    document.getElementById('cm-title').textContent=m[1];
+    var b=document.getElementById('cm-body'); b.innerHTML=''; b.appendChild(document.getElementById('t-'+k).content.cloneNode(true));
+    if(d.showModal) d.showModal(); else d.setAttribute('open','');
+    d.querySelector('.qm').scrollTop=0;
+  }
+  function close(){ if(d.close) d.close(); else d.removeAttribute('open'); }
+  document.querySelectorAll('.ring .seg').forEach(function(g){
+    g.addEventListener('click',function(){ open(g.getAttribute('data-k')); });
+    g.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(g.getAttribute('data-k')); } });
+  });
   d.addEventListener('click',function(e){ if(e.target===d) close(); });
   d.querySelector('.qm-x').addEventListener('click',close);
 })();
